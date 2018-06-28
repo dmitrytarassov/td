@@ -21,13 +21,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
     compress: true,
     port: 9000,
     index: 'index.html',
     inline: true,
-    hot: true,
-    contentBase: './public'
+    hot: true
   },
   plugins: [
     new TSLintPlugin({

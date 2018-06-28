@@ -12,16 +12,25 @@ class Map {
     this.parse();
   }
   parse () {
-    this.mapData.map.forEach((elementsString: string, i: number) => {
+    this.mapData.map.forEach((elements, i: number) => {
       const { square } = this.mapData.size;
       const y = i * square;
-      elementsString.split(' ').forEach((mapElementName: string, i: number) => {
-        const x = i * square;
-        const element: MapObject | null = this.getMapElement(mapElementName, [x, y], square);
-        if (element) {
-          this.mapElements.push(element);
+      let x = 0;
+      elements.forEach((elementData) => {
+        const { texture, count } = elementData;
+        for (let i = 0; i < count; i = i + 1) {
+          const terrain = new Terrain([x * square, y], square, texture);
+          this.mapElements.push(terrain);
+          x = x + 1;
         }
       });
+      // elementsString.split(' ').forEach((mapElementName: string, i: number) => {
+      //   const x = i * square;
+      //   const element: MapObject | null = this.getMapElement(mapElementName, [x, y], square);
+      //   if (element) {
+      //     this.mapElements.push(element);
+      //   }
+      // });
     });
     this.mapData.objects.forEach((element) => {
       const { square } = this.mapData.size;
@@ -32,7 +41,7 @@ class Map {
   getMapElement (mapElementName: string, coords: [number, number], size: number): MapObject {
     switch (mapElementName) {
       case 'T':
-        return new Terrain(coords, size);
+        return new Terrain(coords, size, '');
         break;
       default:
         return null;

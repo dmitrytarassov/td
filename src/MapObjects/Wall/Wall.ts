@@ -19,7 +19,11 @@ class Wall extends MapObject {
   }
   draw (ctx: any) {
     ctx.fillRect(this.x, this.y, this.size, this.size);
-    const { x, y, yDraw, xDraw, size } = this;
+    const x = this.x;
+    const y = this.y;
+    const yDraw = this.yDraw;
+    const xDraw = this.xDraw;
+    const size = this.size;
     this.texture.onload = () => {
       ctx.drawImage(this.texture, size * x, size * y, size * xDraw, size * yDraw);
     };

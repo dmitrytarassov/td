@@ -4,15 +4,87 @@ const map: map = {
   size: {
     width: 600,
     height: 600,
-    square: 100,
+    square: 50,
   },
   map: [
-    'T T T T T T',
-    'T T T T T T',
-    'T T T T T T',
-    'T T T T T T',
-    'T T T T T T',
-    'T T T T T T',
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 9,
+      },
+      {
+        texture: 'bg/tgrb001.png',
+        count: 3,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 10,
+      },
+      {
+        texture: 'bg/tgrb001.png',
+        count: 2,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 11,
+      },
+      {
+        texture: 'bg/tgrb001.png',
+        count: 1,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
+    [
+      {
+        texture: 'bg/tgrb000.png',
+        count: 12,
+      },
+    ],
   ],
   objects: [
     {
