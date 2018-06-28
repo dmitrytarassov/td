@@ -1,6 +1,6 @@
 import map0 from '../maps/map0';
 import map from '../types/map';
-import Map from '../map/Map';
+import Map from '../Map/Map';
 
 class Game {
   ctx: any;
