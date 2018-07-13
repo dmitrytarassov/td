@@ -1,0 +1,36 @@
+{
+  "name": "map0",
+  "size": {
+    "width": 600,
+    "height": 600,
+    "square": 50
+  },
+  "map": [
+    [
+      {
+        "objectName": "tgrb000",
+        "count": 10
+      },
+      {
+        "objectName": "tgrs010",
+        "count": 1,
+        "rotation": 180
+      },
+      {
+        "objectName": "watrtl08",
+        "count": 1
+      },
+      {
+        "objectName": "watrtl21",
+        "count": 5
+      }
+    ]
+  ],
+  "objects": [
+    {
+      "coords": [0, 1],
+      "objectType": "tree",
+      "objectName": "tree1"
+    }
+  ]
+}
