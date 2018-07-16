@@ -1,9 +1,9 @@
 {
   "name": "map0",
   "size": {
-    "width": 600,
-    "height": 600,
-    "square": 36
+    "width": 640,
+    "height": 640,
+    "square": 32
   },
   "map": [
     [

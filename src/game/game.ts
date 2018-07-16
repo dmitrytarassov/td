@@ -6,10 +6,11 @@ import TypeCoordinates from '../types/TypeCoordinates';
 
 class Game {
   ctx: any;
-  level: number = 0;
   map: Map;
   kbController: KeyboardController;
+  showInfo: boolean;
   constructor(element: any) {
+    this.showInfo = true;
     this.ctx = element.getContext('2d');
     this.map = new Map('map0');
     this.kbController = new KeyboardController();
@@ -26,17 +27,24 @@ class Game {
       this.moveMap([-1, 0]);
     });
   }
-
   start () {
-    this.map.render(this.render);
+    this.render();
+  }
+  render () {
+    this.map.render(this.draw);
   }
   @autobindDecorator
-  render (image: any,
+  draw (image: any,
           x: number,
           y: number,
           xSize: number,
           ySize: number,
-          rotation: number) {
+          rotation: number,
+          objectInfo: {
+            zone?: Coordinates[],
+            noMove?: boolean
+          },
+        ) {
     if (rotation === 0) {
       this.ctx.drawImage(image, x, y, xSize, ySize);
     } else {
@@ -49,11 +57,19 @@ class Game {
       this.ctx.drawImage(image, xSize / -2, ySize / -2, xSize, ySize);
       this.ctx.restore();
     }
+    if (this.showInfo) {
+      this.ctx.strokeStyle = '#f00';
+      this.ctx.strokeRect(x, y, xSize, ySize);
+      if (objectInfo.noMove) {
+        this.ctx.fillStyle = 'rgba(255, 0, 0, .3)';
+        this.ctx.fillRect(x, y, xSize, ySize);
+      }
+    }
   }
   @autobindDecorator
   moveMap(coords: TypeCoordinates) {
     if (this.map.move(coords)) {
-      this.map.render(this.render);
+      this.render();
     }
   }
 }

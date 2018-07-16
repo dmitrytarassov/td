@@ -42,7 +42,9 @@ class Map {
     noEarth.onload = () => {
       for (let i = 0; i < squareX; i = i + 1) {
         for (let j = 0; j < squareY; j = j + 1) {
-          renderFunc(noEarth, (scaleX + i) * square, (scaleY + j) * square, square, square, 0);
+          renderFunc(noEarth, (scaleX + i) * square, (scaleY + j) * square, square, square, 0, {
+            noMove: false,
+          });
         }
       }
       this.mapData.ground.forEach((element: TypeMapGround) => {
@@ -53,7 +55,9 @@ class Map {
         texture = '/textures/bg/' + texture;
         const image = new Image();
         image.onload = () => {
-          renderFunc(image, coordinatesX, coordinatesY, square, square, rotation);
+          renderFunc(image, coordinatesX, coordinatesY, square, square, rotation, {
+            noMove: false,
+          });
         };
         image.src = texture;
       });
