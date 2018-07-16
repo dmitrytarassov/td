@@ -1,7 +1,10 @@
 import TypeMap from '../../types/TypeMap';
 import parser from '../../maps/parser';
 import { map0 } from '../../maps/maps.js';
+import getGroundTextures from '../../library/textures/getGroundTextures';
+
 import TypeMapGround from '../../types/TypeMapGround';
+import TypeCoordinates from '../../types/TypeCoordinates';
 
 type mapsArray = any[];
 
@@ -12,6 +15,7 @@ const MAPS: mapsArray = [
 class Map {
   mapName: string;
   mapData: TypeMap;
+  scale: TypeCoordinates = [0, 0];
   constructor(mapName: string) {
     this.mapName = mapName;
     const currentMap = this.getCurrentMap();
@@ -27,19 +31,53 @@ class Map {
   }
   render (renderFunc: Function) {
     const square = +this.mapData.size.square;
-    this.mapData.ground.forEach((element: TypeMapGround) => {
-      const { coordinates, rotation } = element;
-      let { texture } = element;
-      coordinates[0] = square * coordinates[0];
-      coordinates[1] = square * coordinates[1];
-      texture = '/textures/bg/' + texture;
-      const image = new Image();
-      image.onload = () => {
-        renderFunc(image, coordinates[0], coordinates[1], square, square, rotation);
-      };
-      image.src = texture;
-      console.log(texture);
-    });
+    const scaleX: number = this.scale[0];
+    const scaleY: number = this.scale[1];
+    const noEarthImage = getGroundTextures('EDG4');
+    const squareX = +this.mapData.size.width / square;
+    const squareY = +this.mapData.size.height / square;
+    const noEarth = new Image();
+    // const borderImage = getGroundTextures('EDG24');
+    // const border = new Image();
+    noEarth.onload = () => {
+      for (let i = 0; i < squareX; i = i + 1) {
+        for (let j = 0; j < squareY; j = j + 1) {
+          renderFunc(noEarth, (scaleX + i) * square, (scaleY + j) * square, square, square, 0);
+        }
+      }
+      this.mapData.ground.forEach((element: TypeMapGround) => {
+        const { coordinates, rotation } = element;
+        let { texture } = element;
+        const coordinatesX = square * (scaleX + coordinates[0]);
+        const coordinatesY = square * (scaleY + coordinates[1]);
+        texture = '/textures/bg/' + texture;
+        const image = new Image();
+        image.onload = () => {
+          renderFunc(image, coordinatesX, coordinatesY, square, square, rotation);
+        };
+        image.src = texture;
+      });
+    };
+    noEarth.src = '/textures/bg/' + noEarthImage;
+    // border.src = '/textures/bg/' + borderImage;
+  }
+  move (coords: TypeCoordinates) {
+    let newScaleX = this.scale[0] + coords[0];
+    let newScaleY = this.scale[1] + coords[1];
+    // const square = +this.mapData.size.square;
+    // const squareX = +this.mapData.size.width / square;
+    // const squareY = +this.mapData.size.height / square;
+    if (newScaleX > 0) {
+      newScaleX = 0;
+    }
+    if (newScaleY > 0) {
+      newScaleY = 0;
+    }
+    if (newScaleY === this.scale[1] && newScaleX === this.scale[0]) {
+      return false;
+    }
+    this.scale = [newScaleX, newScaleY];
+    return true;
   }
 }
 

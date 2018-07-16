@@ -3,9 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style>
+    .canvasContainer {
+      width: 600px;
+      height: 600px;
+      padding: 32px;
+      background-size: 32px;
+      background: url(/textures/bg/EDG33.png) repeat-y, url(/textures/bg/EDG24.png) repeat-x;
+      position: relative;
+    }
+    .canvasContainer::after {
+      content: '';
+      background: url(/textures/bg/EDG28.png) top right repeat-y, url(/textures/bg/EDG30.png) bottom left repeat-x;
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      padding: inherit;
+      top: 0;
+      left: 0;
+      z-index:1;
+    }
+    .canvasContainer::before {
+      content: '';
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      padding: inherit;
+      top: 0;
+      left: 0;
+      z-index:2;
+      background: url(/textures/bg/EDG20.png) bottom left no-repeat, url(/textures/bg/EDG17.png) top left no-repeat, url(/textures/bg/EDG18.png) top right no-repeat, url(/textures/bg/EDG19.png) bottom right no-repeat;
+    }
+  </style>
 </head>
 <body>
-  <canvas height='600' width='600' id='canvas'></canvas>
+  <div class="canvasContainer">
+    <canvas height='600' width='600' id='canvas'></canvas>
+  </div>
   <script src="bundle.js"></script>
 </body>
 </html>

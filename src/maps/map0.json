@@ -3,13 +3,36 @@
   "size": {
     "width": 600,
     "height": 600,
-    "square": 50
+    "square": 36
   },
   "map": [
     [
       {
         "objectName": "tgrb000",
-        "count": 10
+        "count": 9
+      },
+      {
+        "objectName": "tgrs033",
+        "count": 1
+      },
+      {
+        "objectName": "tgrs001",
+        "count": 1,
+        "rotation": 180
+      },
+      {
+        "objectName": "watrtl08",
+        "count": 1
+      },
+      {
+        "objectName": "watrtl21",
+        "count": 5
+      }
+    ],
+    [
+      {
+        "objectName": "tgrb000",
+        "count": 9
       },
       {
         "objectName": "tgrs010",
@@ -17,8 +40,13 @@
         "rotation": 180
       },
       {
-        "objectName": "watrtl08",
+        "objectName": "watrtl18",
         "count": 1
+      },
+      {
+        "objectName": "watrtl19",
+        "count": 1,
+        "rotation": 180
       },
       {
         "objectName": "watrtl21",
