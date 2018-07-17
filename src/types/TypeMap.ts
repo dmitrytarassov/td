@@ -1,4 +1,5 @@
 import TypeMapGround from './TypeMapGround';
+import TypeMapObject from './TypeMapObject';
 
 type TypeMap = {
   size: {
@@ -7,6 +8,7 @@ type TypeMap = {
     square: number,
   },
   ground: TypeMapGround[],
+  objects: TypeMapObject[],
 };
 
 export default TypeMap;

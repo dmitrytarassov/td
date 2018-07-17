@@ -2,6 +2,8 @@ import TypeCoordinates from './TypeCoordinates';
 
 type TypeMapObject = {
   coordinates: TypeCoordinates,
+  zone: TypeCoordinates[],
+  size: TypeCoordinates,
   objectType: string,
   objectName: string,
   interactive: boolean,

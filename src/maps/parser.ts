@@ -3,6 +3,8 @@ import MapObject from '../game/MapObject/MapObject';
 import TypeMapGround from '../types/TypeMapGround';
 import TypeCoordinates from '../types/TypeCoordinates';
 import getGroundTextures from '../library/textures/getGroundTextures';
+import getMapObject from '../library/getMapObject';
+import TypeMapObject from "../types/TypeMapObject";
 
 function parser(mapData: {
   size: {
@@ -11,9 +13,12 @@ function parser(mapData: {
     square: number,
   },
   map: any[],
+  objects: any[],
 }): TypeMap {
   const ground = mapData.map;
+  const objects = mapData.objects;
   const groundData: TypeMapGround[] = [];
+  const mapObjects: TypeMapObject[] = [];
   ground.forEach((element, index) => {
     const groundElements = parseGround(element, index);
     if (groundElements.length) {
@@ -22,6 +27,10 @@ function parser(mapData: {
       });
     }
   });
+  objects.forEach((element, index) => {
+    const { coords, objectType, objectName } = element;
+    mapObjects.push(getMapObject(objectName, objectType, coords));
+  });
   const data: TypeMap = {
     size: {
       width: +mapData.size.width || 600,
@@ -29,6 +38,7 @@ function parser(mapData: {
       square: +mapData.size.square || 50,
     },
     ground: groundData,
+    objects: mapObjects,
   };
   return data;
 }

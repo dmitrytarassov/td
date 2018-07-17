@@ -5,6 +5,7 @@ import getGroundTextures from '../../library/textures/getGroundTextures';
 
 import TypeMapGround from '../../types/TypeMapGround';
 import TypeCoordinates from '../../types/TypeCoordinates';
+import TypeMapObject from '../../types/TypeMapObject';
 
 type mapsArray = any[];
 
@@ -56,6 +57,21 @@ class Map {
         const image = new Image();
         image.onload = () => {
           renderFunc(image, coordinatesX, coordinatesY, square, square, rotation, {
+            noMove: false,
+          });
+        };
+        image.src = texture;
+      });
+      this.mapData.objects.forEach((element: TypeMapObject) => {
+        const { coordinates, objectType, size } = element;
+        let { texture } = element;
+        console.log(element);
+        const coordinatesX = square * (scaleX + coordinates[0]);
+        const coordinatesY = square * (scaleY + coordinates[1]);
+        texture = `/textures/${objectType}/${texture}`;
+        const image = new Image();
+        image.onload = () => {
+          renderFunc(image, coordinatesX, coordinatesY, square * size[0], square * size[1], 0, {
             noMove: false,
           });
         };

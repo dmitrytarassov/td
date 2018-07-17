@@ -10,7 +10,7 @@ class Game {
   kbController: KeyboardController;
   showInfo: boolean;
   constructor(element: any) {
-    this.showInfo = true;
+    this.showInfo = false;
     this.ctx = element.getContext('2d');
     this.map = new Map('map0');
     this.kbController = new KeyboardController();
@@ -31,20 +31,35 @@ class Game {
     this.render();
   }
   render () {
-    this.map.render(this.draw);
+    const start: number = performance.now();
+    const duration = 10;
+    const animate = (time: number) => {
+      // определить, сколько прошло времени с начала анимации
+      let timePassed = time - start;
+      // возможно небольшое превышение времени, в этом случае зафиксировать конец
+      if (timePassed > duration) timePassed = duration;
+      // нарисовать состояние анимации в момент timePassed
+      this.map.render(this.draw);
+      // если время анимации не закончилось - запланировать ещё кадр
+      if (timePassed < duration) {
+        requestAnimationFrame(animate);
+      }
+    };
+    requestAnimationFrame(animate);
   }
   @autobindDecorator
   draw (image: any,
-          x: number,
-          y: number,
-          xSize: number,
-          ySize: number,
-          rotation: number,
-          objectInfo: {
-            zone?: Coordinates[],
-            noMove?: boolean
-          },
+            x: number,
+            y: number,
+            xSize: number,
+            ySize: number,
+            rotation: number,
+            objectInfo: {
+              zone?: Coordinates[],
+              noMove?: boolean,
+            },
         ) {
+    // console.log('draw');
     if (rotation === 0) {
       this.ctx.drawImage(image, x, y, xSize, ySize);
     } else {

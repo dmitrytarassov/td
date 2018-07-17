@@ -26,13 +26,41 @@
       },
       {
         "objectName": "watrtl21",
-        "count": 5
+        "count": 7
       }
     ],
     [
       {
         "objectName": "tgrb000",
-        "count": 9
+        "count": 8
+      },
+      {
+        "objectName": "tgrs043",
+        "count": 1
+      },
+      {
+        "objectName": "tgrs001",
+        "count": 1,
+        "rotation": 180
+      },
+      {
+        "objectName": "watrtl18",
+        "count": 1
+      },
+      {
+        "objectName": "watrtl19",
+        "count": 1,
+        "rotation": 180
+      },
+      {
+        "objectName": "watrtl21",
+        "count": 7
+      }
+    ],
+    [
+      {
+        "objectName": "tgrb000",
+        "count": 8
       },
       {
         "objectName": "tgrs010",
@@ -50,15 +78,15 @@
       },
       {
         "objectName": "watrtl21",
-        "count": 5
+        "count": 8
       }
     ]
   ],
   "objects": [
     {
-      "coords": [0, 1],
-      "objectType": "tree",
-      "objectName": "tree1"
+      "coords": [0, 0],
+      "objectType": "barrier",
+      "objectName": "AvLMtGr1"
     }
   ]
 }
