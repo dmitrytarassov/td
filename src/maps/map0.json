@@ -87,6 +87,16 @@
       "coords": [0, 0],
       "objectType": "barrier",
       "objectName": "AvLMtGr1"
+    },
+    {
+      "coords": [2, 0],
+      "objectType": "barrier",
+      "objectName": "AvLMtGr1"
+    },
+    {
+      "coords": [5, 0],
+      "objectType": "object",
+      "objectName": "AVXhilg0"
     }
   ]
 }

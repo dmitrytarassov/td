@@ -1,12 +1,6 @@
 import TypeMapObject from '../../types/TypeMapObject';
 import TypeCoordinates from '../../types/TypeCoordinates';
-
-const zones = (zoneName: string): TypeCoordinates[] => {
-  switch (zoneName) {
-    case '110|111|011': return [[0, 0], [0, 1], [1, 0], [1, 1], [1, 2], [2, 1], [2, 2]];
-    default: return [[0, 0]];
-  }
-};
+import zones from './zones';
 
 const getBarrier = (objectName: string, coordinates: TypeCoordinates): TypeMapObject => {
   const objectType = 'barrier';
